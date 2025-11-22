@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CivicEvents | Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body class="bg-gray-100">
+<script>requireAdmin();</script>
+
+<nav class="bg-blue-700 text-white px-6 py-4 flex justify-between items-center">
+    <h1 class="font-bold text-xl">CivicEvents Admin</h1>
+
+    <div class="flex items-center gap-4">
+        <a href="dashboard.html" class="underline">Dashboard</a>
+        <a href="admin_users.html">Users</a>
+        <a href="events.html">Events</a>
+        <button onclick="logout()" class="bg-red-500 px-3 py-1 rounded">Logout</button>
+    </div>
+</nav>
+
+<div class="max-w-6xl mx-auto mt-10 px-4">
+    <h2 class="text-3xl font-bold mb-6">Dashboard</h2>
+
+    <div class="grid md:grid-cols-3 gap-6" id="dashboardStats"></div>
+
+    <h3 class="text-2xl font-bold mt-10 mb-4">Recent Activity</h3>
+    <div id="activityFeed" class="space-y-3"></div>
+</div>
+
+<footer class="bg-gray-900 text-gray-300 mt-10 p-6 text-center">
+    CivicEvents © 2024
+</footer>
+
+</body>
+</html>

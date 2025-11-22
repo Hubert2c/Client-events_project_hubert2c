@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CivicEvents | Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<div class="max-w-lg mx-auto mt-16 bg-white p-8 shadow rounded">
+    <h2 class="text-2xl font-bold mb-4 text-center">Create Account</h2>
+
+    <input id="full_name" type="text" placeholder="Full Name" class="w-full mb-3 p-2 border rounded">
+    <input id="email" type="email" placeholder="Email" class="w-full mb-3 p-2 border rounded">
+    <input id="password" type="password" placeholder="Password" class="w-full mb-3 p-2 border rounded">
+    <input id="confirm_password" type="password" placeholder="Confirm Password" class="w-full mb-3 p-2 border rounded">
+
+    <button id="signupBtn" class="bg-green-600 text-white w-full py-2 rounded">Sign Up</button>
+
+    <p class="text-center mt-4">
+        Already have an account? <a href="login.html" class="text-blue-600 underline">Login</a>
+    </p>
+</div>
+
+<script>
+$("#signupBtn").click(async () => {
+    const p = $("#password").val();
+    if (p !== $("#confirm_password").val()) {
+        alert("Passwords do not match");
+        return;
+    }
+
+    try {
+        await apiPOST("/auth/signup", {
+            full_name: $("#full_name").val(),
+            email: $("#email").val(),
+            password: p
+        });
+
+        alert("Account created. Please log in.");
+        window.location.href = "login.html";
+    } catch (err) {
+        alert(err.message);
+    }
+});
+</script>
+
+</body>
+</html>

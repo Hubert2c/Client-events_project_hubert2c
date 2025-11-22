@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CivicEvents | Announcements</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<nav class="bg-blue-700 text-white px-6 py-4 flex justify-between items-center">
+    <h1 class="font-bold text-xl">CivicEvents</h1>
+    <div class="flex items-center gap-4">
+        <a href="events.html">Events</a>
+        <a href="announcements.html" class="underline">Announcements</a>
+        <a href="promos.html">Promos</a>
+        <a href="notifications.html" class="relative">
+            Notifications
+            <span id="notifCount" class="absolute -top-2 -right-3 bg-red-600 text-xs px-2 py-0.5 rounded-full">0</span>
+        </a>
+        <a href="profile.html">Profile</a>
+        <a href="announcement_form.html" class="admin-only bg-green-600 text-white px-3 py-1 rounded">Create</a>
+        <button onclick="logout()" class="bg-red-500 px-3 py-1 rounded">Logout</button>
+    </div>
+</nav>
+
+<div class="max-w-5xl mx-auto mt-10 px-4">
+    <h2 class="text-3xl font-bold mb-6">Announcements</h2>
+    <div id="announcementsList" class="space-y-4"></div>
+</div>
+
+<footer class="bg-gray-900 text-gray-300 mt-10 p-6 text-center">
+    CivicEvents © 2024
+</footer>
+
+<script>
+requireAuth();
+const user = getUser();
+if (!user || user.role !== "admin") $(".admin-only").remove();
+</script>
+
+</body>
+</html>

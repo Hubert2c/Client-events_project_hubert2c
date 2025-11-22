@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CivicEvents | Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<nav class="bg-blue-700 text-white px-6 py-4 flex justify-between items-center">
+    <h1 class="font-bold text-xl">CivicEvents</h1>
+
+    <div class="flex items-center gap-4">
+        <a href="events.html" class="underline">Events</a>
+        <a href="announcements.html">Announcements</a>
+        <a href="promos.html">Promos</a>
+        <a href="notifications.html" class="relative">
+            Notifications
+            <span id="notifCount" class="absolute -top-2 -right-3 bg-red-600 text-xs px-2 py-0.5 rounded-full">0</span>
+        </a>
+        <a href="profile.html">Profile</a>
+        <a href="dashboard.html" class="admin-only text-yellow-300">Admin</a>
+        <button onclick="logout()" class="ml-5 bg-red-500 px-3 py-1 rounded">Logout</button>
+    </div>
+</nav>
+
+<div class="max-w-6xl mx-auto mt-10 px-4">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-bold">Events</h2>
+        <a href="event_form.html" class="admin-only bg-green-600 text-white px-4 py-2 rounded">Create Event</a>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="eventsList"></div>
+</div>
+
+<footer class="bg-gray-900 text-gray-300 mt-10 p-6 text-center">
+    CivicEvents © 2024 • Accessible City Services Portal
+</footer>
+
+<script>
+requireAuth();
+const user = getUser();
+if (!user || user.role !== "admin") $(".admin-only").remove();
+</script>
+
+</body>
+</html>

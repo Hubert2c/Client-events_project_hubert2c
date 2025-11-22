@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CivicEvents | Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<script>
+if (localStorage.getItem("civic_token") || sessionStorage.getItem("civic_token")) {
+    window.location.href = "events.html";
+} else {
+    window.location.href = "login.html";
+}
+</script>
+</body>
+</html>
